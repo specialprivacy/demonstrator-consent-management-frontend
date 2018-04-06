@@ -1,0 +1,20 @@
+<ul>
+{{#each model as |consent|}}
+  <li>
+    <span>Data: {{consent.dataAtom}}</span><br/>
+    <span>Location: {{consent.locationAtom}}</span><br/>
+    <span>Process: {{consent.processAtom}}</span><br/>
+    <span>Purpose: {{consent.purposeAtom}}</span><br/>
+    <span>Recipient: {{consent.recipientAtom}}</span><br/>
+    {{input type="checkbox" checked=consent.given change=(action "toggleConsent" consent)}}<br/><br/>
+  </li>
+{{else}}
+  <li>No consents to show.</li>
+{{/each}}
+</ul>
+
+<button {{action "unloadAll"}}>RESET THE WORLD</button>
+app: {{applicationId}}
+user: {{userId}}
+
+{{outlet}}
