@@ -3,5 +3,5 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   name: DS.attr('string'),
 
-  consents: DS.hasMany('consent', {inverse: null})
+  policies: DS.hasMany('policy', {async: true, inverse: null})
 });

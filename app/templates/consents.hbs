@@ -1,20 +1,21 @@
+Consents: {{user.policies.length}}<br/>
+{{#each (await user.policies) as |consent index|}}
+  {{index}}: {{consent.id}} <br/>
+{{/each}}
 <ul>
-{{#each model as |consent|}}
+{{#each policies as |policy|}}
   <li>
-    <span>Data: {{consent.dataAtom}}</span><br/>
-    <span>Location: {{consent.locationAtom}}</span><br/>
-    <span>Process: {{consent.processAtom}}</span><br/>
-    <span>Purpose: {{consent.purposeAtom}}</span><br/>
-    <span>Recipient: {{consent.recipientAtom}}</span><br/>
-    {{input type="checkbox" checked=consent.given change=(action "toggleConsent" consent)}}<br/><br/>
+    <span>Data: {{policy.dataAtom}}</span><br/>
+    <span>Location: {{policy.locationAtom}}</span><br/>
+    <span>Process: {{policy.processAtom}}</span><br/>
+    <span>Purpose: {{policy.purposeAtom}}</span><br/>
+    <span>Recipient: {{policy.recipientAtom}}</span><br/>
+    {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}<br/><br/>
   </li>
 {{else}}
   <li>No consents to show.</li>
 {{/each}}
 </ul>
 
-<button {{action "unloadAll"}}>RESET THE WORLD</button>
-app: {{applicationId}}
-user: {{userId}}
-
+<button {{action "save"}}>Save new policies</button>
 {{outlet}}
