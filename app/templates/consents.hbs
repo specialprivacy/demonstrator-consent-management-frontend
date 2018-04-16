@@ -5,11 +5,11 @@ Consents: {{user.policies.length}}<br/>
 <ul>
 {{#each policies as |policy|}}
   <li>
-    <span>Data: {{policy.dataAtom}}</span><br/>
-    <span>Location: {{policy.locationAtom}}</span><br/>
-    <span>Process: {{policy.processAtom}}</span><br/>
-    <span>Purpose: {{policy.purposeAtom}}</span><br/>
-    <span>Recipient: {{policy.recipientAtom}}</span><br/>
+    <span>Data: {{policy.dataCollection}}</span><br/>
+    <span>Location: {{policy.locationCollection}}</span><br/>
+    <span>Process: {{policy.processCollection}}</span><br/>
+    <span>Purpose: {{policy.purposeCollection}}</span><br/>
+    <span>Recipient: {{policy.recipientCollection}}</span><br/>
     {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}<br/><br/>
   </li>
 {{else}}
