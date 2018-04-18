@@ -3,32 +3,32 @@
     {{#each policies as |policy|}}
       {{#paper-item class="md-3-line consent-item" }}
         <div class="md-list-item-text">
-          <div class="consent-item_textblock">
-            <div class="consent-item_textblockTitle">Data: </div>
-            <div class="consent-item_textblockText">{{policy.dataCollection}}</div>
+          <div class="consent-item_textBlock">
+            <div class="consent-item_textBlockTitle">Data: </div>
+            <div class="consent-item_textBlockText">{{policy.dataCollection}}</div>
           </div>
-          <div class="consent-item_textblock">
-            <div class="consent-item_textblockTitle">Location: </div>
-            <div class="consent-item_textblockText">{{policy.locationCollection}}</div>
+          <div class="consent-item_textBlock">
+            <div class="consent-item_textBlockTitle">Location: </div>
+            <div class="consent-item_textBlockText">{{policy.locationCollection}}</div>
           </div>
-          <div class="consent-item_textblock">
-            <div class="consent-item_textblockTitle">Process: </div>
-            <div class="consent-item_textblockText">{{policy.processCollection}}</div>
+          <div class="consent-item_textBlock">
+            <div class="consent-item_textBlockTitle">Process: </div>
+            <div class="consent-item_textBlockText">{{policy.processCollection}}</div>
           </div>
-          <div class="consent-item_textblock">
-            <div class="consent-item_textblockTitle">Purpose: </div>
-            <div class="consent-item_textblockText">{{policy.purposeCollection}}</div>
+          <div class="consent-item_textBlock">
+            <div class="consent-item_textBlockTitle">Purpose: </div>
+            <div class="consent-item_textBlockText">{{policy.purposeCollection}}</div>
           </div>
-          <div class="consent-item_textblock">
-            <div class="consent-item_textblockTitle">Recipient: </div>
-            <div class="consent-item_textblockText">{{policy.recipientCollection}}</div>
+          <div class="consent-item_textBlock">
+            <div class="consent-item_textBlockTitle">Recipient: </div>
+            <div class="consent-item_textBlockText">{{policy.recipientCollection}}</div>
           </div>
 
-          <div class="consent-item_checkboxblock">
+          <div class="consent-item_checkboxBlock">
             {{array-includes-item array=(await user.policies) item=policy}}
 
             {{#paper-checkbox value=(array-includes-item array=(await user.policies) item=policy) noink=true onChange=(action "insertOrRemovePolicy" user.policies policy)}}
-            A checkbox
+              A checkbox
             {{/paper-checkbox}}
 
             {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}
@@ -38,16 +38,22 @@
       {{/paper-item}}
       {{paper-divider}}
       {{else}}
-        {{#paper-item class="md-3-line" }}
+        {{#paper-item class="consent-item" }}
           <div class="md-list-item-text">
-            <div class="consent-item_textblock">
-              <div class="consent-item_textblockText">No consents to show.</div>
+            <div class="consent-item_textBlock">
+              <div class="consent-item_textBlockText">No consents to show.</div>
             </div>
           </div>
         {{/paper-item}}
         {{paper-divider}}
     {{/each}}
+    {{paper-divider}}
+    {{#paper-item class="consent-item" }}
+      <div class="consent-item_buttonBlock">
+        {{#paper-button raised=true primary=true noink=true onClick=(action "save")}}
+          Save new policies
+        {{/paper-button}}
+      </div>
+    {{/paper-item}}
   {{/paper-list}}
 {{/paper-content}}
-
-<button {{action "save"}}>Save new policies</button> {{outlet}}

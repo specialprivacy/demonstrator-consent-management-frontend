@@ -18,10 +18,14 @@
   }
 
   &-item {
-    &_checkboxblock {
+    &_checkboxBlock {
       text-align: right;
     }
-    &_textblock {
+    &_buttonBlock {
+      width: 100%;
+      text-align: right;
+    }
+    &_textBlock {
       &Title {
         font-weight: 600;
         font-size: 15px;
