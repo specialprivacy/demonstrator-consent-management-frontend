@@ -24,6 +24,13 @@
             <div class="consent-item_textblock--text">{{policy.recipientCollection}}</div>
           </div>
 
+
+          {{array-includes-item array=(await user.policies) item=policy}}
+
+          {{#paper-checkbox value=(array-includes-item array=(await user.policies) item=policy) noink=true onChange=(action "insertOrRemovePolicy" user.policies policy)}}
+            A checkbox
+          {{/paper-checkbox}}
+
           {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}
         </div>
       {{/paper-item}}

@@ -12,6 +12,7 @@ export default Controller.extend({
       this.get("user").save();
     },
     insertOrRemovePolicy(policies, policy) {
+      console.log('insertorRemove');
       policies.then(policies => {
         if(policies.includes(policy)){
           policies.removeObject(policy);
