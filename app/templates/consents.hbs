@@ -1,21 +1,28 @@
-Consents: {{user.policies.length}}<br/>
-{{#each (await user.policies) as |consent index|}}
-  {{index}}: {{consent.id}} <br/>
-{{/each}}
-<ul>
-{{#each policies as |policy|}}
-  <li>
-    <span>Data: {{policy.dataCollection}}</span><br/>
-    <span>Location: {{policy.locationCollection}}</span><br/>
-    <span>Process: {{policy.processCollection}}</span><br/>
-    <span>Purpose: {{policy.purposeCollection}}</span><br/>
-    <span>Recipient: {{policy.recipientCollection}}</span><br/>
-    {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}<br/><br/>
-  </li>
-{{else}}
-  <li>No consents to show.</li>
-{{/each}}
-</ul>
+{{#paper-content class="md-whiteframe-z1 list-demo consent-list" }}
+  {{#paper-list}}
+    {{#each policies as |policy|}}
+      {{#paper-item class="md-3-line consent-item" }}
+        <div class="md-list-item-text">
+          <span>Data: {{policy.dataCollection}}</span><br/>
+          <span>Location: {{policy.locationCollection}}</span><br/>
+          <span>Process: {{policy.processCollection}}</span><br/>
+          <span>Purpose: {{policy.purposeCollection}}</span><br/>
+          <span>Recipient: {{policy.recipientCollection}}</span><br/>
 
-<button {{action "save"}}>Save new policies</button>
-{{outlet}}
+          {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}
+          <br/><br/>
+        </div>
+      {{/paper-item}}
+      {{paper-divider}}
+      {{else}}
+        {{#paper-item class="md-3-line" }}
+          <div class="md-list-item-text">
+            No consents to show.
+          </div>
+        {{/paper-item}}
+        {{paper-divider}}
+    {{/each}}
+  {{/paper-list}}
+{{/paper-content}}
+
+<button {{action "save"}}>Save new policies</button> {{outlet}}

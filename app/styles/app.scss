@@ -7,3 +7,14 @@
 }
 
 @import 'ember-paper';
+
+.consent {
+  &-list {
+    width: 90%;
+    margin: 3% auto;
+  }
+
+  &-item {
+
+  }
+}
