@@ -3,21 +3,37 @@
     {{#each policies as |policy|}}
       {{#paper-item class="md-3-line consent-item" }}
         <div class="md-list-item-text">
-          <span>Data: {{policy.dataCollection}}</span><br/>
-          <span>Location: {{policy.locationCollection}}</span><br/>
-          <span>Process: {{policy.processCollection}}</span><br/>
-          <span>Purpose: {{policy.purposeCollection}}</span><br/>
-          <span>Recipient: {{policy.recipientCollection}}</span><br/>
+          <div class="consent-item_textblock">
+            <div class="consent-item_textblock--title">Data: </div>
+            <div class="consent-item_textblock--text">{{policy.dataCollection}}</div>
+          </div>
+          <div class="consent-item_textblock">
+            <div class="consent-item_textblock--title">Location: </div>
+            <div class="consent-item_textblock--text">{{policy.locationCollection}}</div>
+          </div>
+          <div class="consent-item_textblock">
+            <div class="consent-item_textblock--title">Process: </div>
+            <div class="consent-item_textblock--text">{{policy.processCollection}}</div>
+          </div>
+          <div class="consent-item_textblock">
+            <div class="consent-item_textblock--title">Purpose: </div>
+            <div class="consent-item_textblock--text">{{policy.purposeCollection}}</div>
+          </div>
+          <div class="consent-item_textblock">
+            <div class="consent-item_textblock--title">Recipient: </div>
+            <div class="consent-item_textblock--text">{{policy.recipientCollection}}</div>
+          </div>
 
           {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}
-          <br/><br/>
         </div>
       {{/paper-item}}
       {{paper-divider}}
       {{else}}
         {{#paper-item class="md-3-line" }}
           <div class="md-list-item-text">
-            No consents to show.
+            <div class="consent-item_textblock">
+              <div class="consent-item_textblock--text">No consents to show.</div>
+            </div>
           </div>
         {{/paper-item}}
         {{paper-divider}}
