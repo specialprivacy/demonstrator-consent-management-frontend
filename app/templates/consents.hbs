@@ -4,34 +4,36 @@
       {{#paper-item class="md-3-line consent-item" }}
         <div class="md-list-item-text">
           <div class="consent-item_textblock">
-            <div class="consent-item_textblock--title">Data: </div>
-            <div class="consent-item_textblock--text">{{policy.dataCollection}}</div>
+            <div class="consent-item_textblockTitle">Data: </div>
+            <div class="consent-item_textblockText">{{policy.dataCollection}}</div>
           </div>
           <div class="consent-item_textblock">
-            <div class="consent-item_textblock--title">Location: </div>
-            <div class="consent-item_textblock--text">{{policy.locationCollection}}</div>
+            <div class="consent-item_textblockTitle">Location: </div>
+            <div class="consent-item_textblockText">{{policy.locationCollection}}</div>
           </div>
           <div class="consent-item_textblock">
-            <div class="consent-item_textblock--title">Process: </div>
-            <div class="consent-item_textblock--text">{{policy.processCollection}}</div>
+            <div class="consent-item_textblockTitle">Process: </div>
+            <div class="consent-item_textblockText">{{policy.processCollection}}</div>
           </div>
           <div class="consent-item_textblock">
-            <div class="consent-item_textblock--title">Purpose: </div>
-            <div class="consent-item_textblock--text">{{policy.purposeCollection}}</div>
+            <div class="consent-item_textblockTitle">Purpose: </div>
+            <div class="consent-item_textblockText">{{policy.purposeCollection}}</div>
           </div>
           <div class="consent-item_textblock">
-            <div class="consent-item_textblock--title">Recipient: </div>
-            <div class="consent-item_textblock--text">{{policy.recipientCollection}}</div>
+            <div class="consent-item_textblockTitle">Recipient: </div>
+            <div class="consent-item_textblockText">{{policy.recipientCollection}}</div>
           </div>
 
+          <div class="consent-item_checkboxblock">
+            {{array-includes-item array=(await user.policies) item=policy}}
 
-          {{array-includes-item array=(await user.policies) item=policy}}
-
-          {{#paper-checkbox value=(array-includes-item array=(await user.policies) item=policy) noink=true onChange=(action "insertOrRemovePolicy" user.policies policy)}}
+            {{#paper-checkbox value=(array-includes-item array=(await user.policies) item=policy) noink=true onChange=(action "insertOrRemovePolicy" user.policies policy)}}
             A checkbox
-          {{/paper-checkbox}}
+            {{/paper-checkbox}}
 
-          {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}
+            {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}
+          </div>
+
         </div>
       {{/paper-item}}
       {{paper-divider}}
@@ -39,7 +41,7 @@
         {{#paper-item class="md-3-line" }}
           <div class="md-list-item-text">
             <div class="consent-item_textblock">
-              <div class="consent-item_textblock--text">No consents to show.</div>
+              <div class="consent-item_textblockText">No consents to show.</div>
             </div>
           </div>
         {{/paper-item}}

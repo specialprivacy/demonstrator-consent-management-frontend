@@ -18,14 +18,17 @@
   }
 
   &-item {
+    &_checkboxblock {
+      text-align: right;
+    }
     &_textblock {
-      &--title {
+      &Title {
         font-weight: 600;
         font-size: 15px;
         display: inline-block;
       }
 
-      &--text {
+      &Text {
         font-size: 14px;
         display: inline-block;
       }
