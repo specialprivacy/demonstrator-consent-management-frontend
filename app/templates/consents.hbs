@@ -25,13 +25,8 @@
           </div>
 
           <div class="consent-item_checkboxBlock">
-            {{array-includes-item array=(await user.policies) item=policy}}
-
-            {{#paper-checkbox value=(array-includes-item array=(await user.policies) item=policy) noink=true onChange=(action "insertOrRemovePolicy" user.policies policy)}}
-              A checkbox
+            {{#paper-checkbox value=(array-includes-item array=userPolicies item=policy length=(await userPolicies.length)) noink=true onChange=(action "insertOrRemovePolicy" user.policies policy)}}
             {{/paper-checkbox}}
-
-            {{input type="checkbox" checked=(array-includes-item array=(await user.policies) item=policy) change=(action "insertOrRemovePolicy" user.policies policy)}}
           </div>
 
         </div>
