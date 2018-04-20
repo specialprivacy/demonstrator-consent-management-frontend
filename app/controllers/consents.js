@@ -6,6 +6,9 @@ export default Controller.extend({
   policies: Ember.computed.alias("model.policies"),
 
   actions: {
+    toggleExpand(policy){
+      policy.toggleProperty("expanded");
+    },
     save(){
       this.get("user").save();
     },

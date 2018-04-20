@@ -3,26 +3,39 @@
     {{#each policies as |policy|}}
       {{#paper-item class="md-3-line consent-item" }}
         <div class="md-list-item-text">
-          <div class="consent-item_textBlock">
-            <div class="consent-item_textBlockTitle">Data: </div>
-            <div class="consent-item_textBlockText">{{policy.dataCollection}}</div>
+          <div class="consent-item_collapserBlock">
+            {{#paper-button onClick=(action "toggleExpand" policy) iconButton=true}}{{paper-icon (if policy.expanded "keyboard arrow up" "keyboard arrow down")}}
+              {{#paper-tooltip position="right"}}
+                {{if policy.expanded "Collapse" "Expand"}}
+              {{/paper-tooltip}}
+            {{/paper-button}}
           </div>
           <div class="consent-item_textBlock">
-            <div class="consent-item_textBlockTitle">Location: </div>
-            <div class="consent-item_textBlockText">{{policy.locationCollection}}</div>
+            <div class="consent-item_textBlockTitle">Explanation: </div>
+            <div class="consent-item_textBlockText">{{policy.explanation}}</div>
           </div>
-          <div class="consent-item_textBlock">
-            <div class="consent-item_textBlockTitle">Process: </div>
-            <div class="consent-item_textBlockText">{{policy.processCollection}}</div>
-          </div>
-          <div class="consent-item_textBlock">
-            <div class="consent-item_textBlockTitle">Purpose: </div>
-            <div class="consent-item_textBlockText">{{policy.purposeCollection}}</div>
-          </div>
-          <div class="consent-item_textBlock">
-            <div class="consent-item_textBlockTitle">Recipient: </div>
-            <div class="consent-item_textBlockText">{{policy.recipientCollection}}</div>
-          </div>
+          {{#if policy.expanded}}
+            <div class="consent-item_textBlock">
+              <div class="consent-item_textBlockTitle">Data: </div>
+              <div class="consent-item_textBlockText">{{policy.dataCollection}}</div>
+            </div>
+            <div class="consent-item_textBlock">
+              <div class="consent-item_textBlockTitle">Location: </div>
+              <div class="consent-item_textBlockText">{{policy.locationCollection}}</div>
+            </div>
+            <div class="consent-item_textBlock">
+              <div class="consent-item_textBlockTitle">Process: </div>
+              <div class="consent-item_textBlockText">{{policy.processCollection}}</div>
+            </div>
+            <div class="consent-item_textBlock">
+              <div class="consent-item_textBlockTitle">Purpose: </div>
+              <div class="consent-item_textBlockText">{{policy.purposeCollection}}</div>
+            </div>
+            <div class="consent-item_textBlock">
+              <div class="consent-item_textBlockTitle">Recipient: </div>
+              <div class="consent-item_textBlockText">{{policy.recipientCollection}}</div>
+            </div>
+          {{/if}}
 
           <div class="consent-item_checkboxBlock">
             {{#paper-checkbox value=(array-includes-item array=userPolicies item=policy length=(await userPolicies.length)) noink=true onChange=(action "insertOrRemovePolicy" user.policies policy)}}

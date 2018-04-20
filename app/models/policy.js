@@ -5,5 +5,8 @@ export default DS.Model.extend({
   locationCollection: DS.attr('string'),
   processCollection: DS.attr('string'),
   purposeCollection: DS.attr('string'),
-  recipientCollection: DS.attr('string')
+  recipientCollection: DS.attr('string'),
+  explanation: DS.attr('string'),
+
+  expanded: false
 });
