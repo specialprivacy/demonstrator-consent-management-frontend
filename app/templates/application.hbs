@@ -1,3 +1,20 @@
-{{paper-toolbar}}
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    <span class="flex"></span>
+      {{#paper-button  noink=true onClick=(action "login")}}
+        Login
+      {{/paper-button}}
+      {{#paper-button  noink=true onClick=(action "logout")}}
+        Logout
+      {{/paper-button}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
+
+{{#if session.isAuthenticated}}
+    Authenticated
+{{else}}
+    Unauthenticated
+{{/if}}
+
 
 {{outlet}}
