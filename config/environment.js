@@ -16,6 +16,15 @@ module.exports = function(environment) {
         Date: false
       }
     },
+    auth: {
+      loginUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/auth?',
+      logoutUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/logout?',
+      clientId:'test',
+      responseType:'token',
+      grantType:'password',
+      loginRedirectUri:'http://localhost:4200/consents'
+      logoutRedirectUri:'http://localhost:4200/'
+    },
 
     APP: {
       // Here you can pass flags/options to your application instance
