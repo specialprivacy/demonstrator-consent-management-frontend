@@ -22,7 +22,7 @@ module.exports = function(environment) {
       clientId:'test',
       responseType:'token',
       grantType:'password',
-      loginRedirectUri:'http://localhost:4200/consents'
+      loginRedirectUri:'http://localhost:4200/consents',
       logoutRedirectUri:'http://localhost:4200/'
     },
 
