@@ -17,11 +17,10 @@ module.exports = function(environment) {
       }
     },
     auth: {
-      loginUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/auth?',
-      logoutUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/logout?',
+      loginUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/auth',
+      logoutUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/logout',
+      tokenEndpoint: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/token',
       clientId:'test',
-      responseType:'token',
-      grantType:'password',
       loginRedirectUri:'http://localhost:4200/consents',
       logoutRedirectUri:'http://localhost:4200/'
     },
