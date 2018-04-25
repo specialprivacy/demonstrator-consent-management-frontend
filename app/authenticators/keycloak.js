@@ -5,11 +5,7 @@ import config from '../config/environment';
 export default Base.extend({
   ajax: Ember.inject.service(),
 
-  authenticate(code) {
-    var data = {
-      token: code
-    };
-    console.log(data);
+  authenticate(data) {
     return new Ember.RSVP.Promise((resolve, reject) => {
       resolve(data);
     });
