@@ -8,7 +8,7 @@ module.exports = function(environment) {
     locationType: 'auto',
     backendUrl: 'http://localhost',
     frontendUrl: 'http://localhost',
-    clientId: 'test',
+    clientId: 'consent-management-frontend',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
