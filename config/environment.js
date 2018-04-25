@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment,
     rootURL: '/',
     locationType: 'auto',
+    backendUrl: 'http://localhost',
+    frontendUrl: 'http://localhost',
+    clientId: 'test',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -16,15 +19,6 @@ module.exports = function(environment) {
         Date: false
       }
     },
-    auth: {
-      loginUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/auth',
-      logoutUrl: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/logout',
-      tokenEndpoint: 'http://localhost:8082/auth/realms/master/protocol/openid-connect/token',
-      clientId:'test',
-      loginRedirectUri:'http://localhost:4200/consents',
-      logoutRedirectUri:'http://localhost:4200/'
-    },
-
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -35,13 +29,25 @@ module.exports = function(environment) {
       'font-src': "'self'",
       'connect-src': "'self' ws://localhost:7000 localhost:7000",
       'img-src': "'self'",
-      'report-uri':"'localhost'",
+      'report-uri': "'localhost'",
       'style-src': "'self' 'unsafe-inline'",
       'frame-src': "'none'"
     }
   };
 
+  try {
+    ENV = (require('./' + environment))(ENV);
+  } catch (err) {}
+  ENV['auth'] = {
+    loginUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/auth`,
+    logoutUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/logout`,
+    tokenEndpoint: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/token`,
+    clientId: `${ENV.clientId}`,
+    loginRedirectUri: `${ENV.frontendUrl}/consents`,
+    logoutRedirectUri: `${ENV.frontendUrl}/`
+  };
   if (environment === 'development') {
+    ENV.frontendUrl = 'http://localhost:4200';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

@@ -9,8 +9,8 @@ export default Route.extend({
     this._super(...arguments);
     var code = this.paramsFor('login')['code'];
     if (code !== null && code !== undefined) {
-      var session = this.get('session').authenticate('authenticator:keycloak', code).then(() => {
-        debugger;
+      this.get('session').authenticate('authenticator:keycloak', code).then(() => {
+        this.transitionTo('consents');
       });
     }
   }
