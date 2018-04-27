@@ -37,7 +37,7 @@ module.exports = function(environment) {
     ENV = (require('./' + environment))(ENV);
   } catch (err) {}
   ENV['backendUrl'] = 'http://localhost';
-  ENV['frontendUrl'] = `http://localhost:4200${ENV.rootURL}`;
+  ENV['frontendUrl'] = `http://localhost${ENV.rootURL}`;
   ENV['auth'] = {
     loginUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/auth`,
     logoutUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/logout`,
