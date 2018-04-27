@@ -10,7 +10,9 @@ export default Controller.extend({
       policy.toggleProperty("expanded");
     },
     save(){
-      this.get("user").save();
+      this.get("user").then(user => {
+        user.save();
+      })
     },
     insertOrRemovePolicy(policies, policy) {
       policies.then(policies => {

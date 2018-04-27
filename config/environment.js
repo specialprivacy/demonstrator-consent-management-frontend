@@ -4,10 +4,8 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'consent-management-frontend',
     environment,
-    rootURL: 'consent/',
+    rootURL: '/consent/',
     locationType: 'auto',
-    backendUrl: 'http://localhost',
-    frontendUrl: 'http://localhost',
     clientId: 'special-platform',
     EmberENV: {
       FEATURES: {
@@ -38,13 +36,15 @@ module.exports = function(environment) {
   try {
     ENV = (require('./' + environment))(ENV);
   } catch (err) {}
+  ENV['backendUrl'] = 'http://localhost';
+  ENV['frontendUrl'] = `http://localhost:4200${ENV.rootURL}`;
   ENV['auth'] = {
     loginUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/auth`,
     logoutUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/logout`,
     tokenEndpoint: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/token`,
     clientId: `${ENV.clientId}`,
-    loginRedirectUri: `${ENV.frontendUrl}/consents`,
-    logoutRedirectUri: `${ENV.frontendUrl}/`
+    loginRedirectUri: `${ENV.frontendUrl}consents`,
+    logoutRedirectUri: `${ENV.frontendUrl}`
   };
   if (environment === 'development') {
     ENV.frontendUrl = 'http://localhost:4200';
