@@ -4,7 +4,7 @@ module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'consent-management-frontend',
     environment,
-    rootURL: '/',
+    rootURL: 'consent/',
     locationType: 'auto',
     backendUrl: 'http://localhost',
     frontendUrl: 'http://localhost',
