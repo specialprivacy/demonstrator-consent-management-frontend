@@ -33,21 +33,7 @@ module.exports = function(environment) {
     }
   };
 
-  try {
-    ENV = (require('./' + environment))(ENV);
-  } catch (err) {}
-  ENV['backendUrl'] = 'http://keycloak:8080';
-  ENV['frontendUrl'] = `http://localhost${ENV.rootURL}`;
-  ENV['auth'] = {
-    loginUrl: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/auth`,
-    logoutUrl: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/logout`,
-    tokenEndpoint: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/token`,
-    clientId: `${ENV.clientId}`,
-    loginRedirectUri: `${ENV.frontendUrl}consents`,
-    logoutRedirectUri: `${ENV.frontendUrl}`
-  };
   if (environment === 'development') {
-    ENV.frontendUrl = 'http://localhost:4200';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;

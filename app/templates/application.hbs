@@ -1,15 +1,7 @@
 {{#paper-toolbar}}
   {{#paper-toolbar-tools}}
+    <h2>Consent Management</h2>
     <span class="flex"></span>
-    {{#if session.isAuthenticated}}
-      {{#paper-button noink=true onClick=(action "logout")}}
-        Logout
-      {{/paper-button}}
-    {{else}}
-      {{#paper-button noink=true onClick=(action "login")}}
-        Login
-      {{/paper-button}}
-    {{/if}}
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 {{outlet}}

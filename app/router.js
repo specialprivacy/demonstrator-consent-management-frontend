@@ -8,7 +8,6 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('consents');
-  this.route('login');
 });
 
 export default Router;
