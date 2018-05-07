@@ -36,11 +36,11 @@ module.exports = function(environment) {
   try {
     ENV = (require('./' + environment))(ENV);
   } catch (err) {}
-  ENV['backendUrl'] = 'http://localhost';
+  ENV['backendUrl'] = 'http://keycloak:8080';
   ENV['frontendUrl'] = `http://localhost${ENV.rootURL}`;
   ENV['auth'] = {
-    loginUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/auth`,
-    logoutUrl: `${ENV.backendUrl}:8082/auth/realms/master/protocol/openid-connect/logout`,
+    loginUrl: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/auth`,
+    logoutUrl: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/logout`,
     tokenEndpoint: `${ENV.backendUrl}/auth/realms/master/protocol/openid-connect/token`,
     clientId: `${ENV.clientId}`,
     loginRedirectUri: `${ENV.frontendUrl}consents`,
