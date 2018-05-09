@@ -4,6 +4,11 @@ export default Controller.extend({
   user: Ember.computed.alias("model.user"),
   userPolicies: Ember.computed.alias("user.policies"),
   policies: Ember.computed.alias("model.policies"),
+  loading: false,
+  setLoading: function(value) {
+    this.set('loading', value);
+    return false;
+  },
 
   actions: {
     toggleExpand(policy){
@@ -11,7 +16,10 @@ export default Controller.extend({
     },
     save(){
       this.get("user").then(user => {
-        user.save();
+        this.setLoading(true);
+        user.save().then(() => {
+          this.setLoading(false);
+        });
       })
     },
     insertOrRemovePolicy(policies, policy) {

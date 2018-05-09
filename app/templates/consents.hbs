@@ -1,3 +1,6 @@
+{{#if loading}}
+  {{paper-progress-linear}}
+{{/if}}
 {{#paper-content class="md-whiteframe-z1 list-demo consent-list" }}
   {{#paper-list}}
     {{#each policies as |policy|}}
@@ -58,7 +61,7 @@
     {{paper-divider}}
     {{#paper-item class="consent-item" }}
       <div class="consent-item_buttonBlock">
-        {{#paper-button raised=true primary=true noink=true onClick=(action "save")}}
+        {{#paper-button disabled=loading raised=true primary=true noink=true onClick=(action "save")}}
           Save new policies
         {{/paper-button}}
       </div>

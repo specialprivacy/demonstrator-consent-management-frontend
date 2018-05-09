@@ -1,11 +1,9 @@
 @import 'ember-power-select';
+@import 'ember-paper';
 
 .list {
   width: 100%;
-
-  .item {}
 }
-@import 'ember-paper';
 
 .consent {
   &-list {
@@ -21,13 +19,16 @@
     &_collapserBlock {
       text-align: right;
     }
+
     &_checkboxBlock {
       text-align: right;
     }
+
     &_buttonBlock {
       width: 100%;
       text-align: right;
     }
+
     &_textBlock {
       &Title {
         font-weight: 600;
@@ -40,5 +41,17 @@
         display: inline-block;
       }
     }
+  }
+}
+
+md-progress-linear {
+  position: absolute;
+  top: 64px;
+  z-index: 10;
+}
+
+@media (max-width: 959px) and (min-width: 0) and (orientation: portrait) {
+  md-progress-linear {
+    top: 51px;
   }
 }
