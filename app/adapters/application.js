@@ -4,8 +4,9 @@ import config from '../config/environment';
 export default DS.RESTAdapter.extend({
   handleResponse(status, headers, payload) {
     if (status === 401) {
-      if(headers.location){
-        return window.location.replace(headers.location);
+      const locationHeader = headers.location || headers.Location || headers.LOCATION
+      if (locationHeader){
+        return window.location.replace(locationHeader);
       }
     }
     return this._super(...arguments);
